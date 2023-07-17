@@ -4,6 +4,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-white shadow fixed-top">
     <div class="container">
+        <img src="{{ Vite::asset('resources/images/icon.png') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
         <a href="{{ route('home') }}" class="navbar-brand mb-4 mt-3 h1 text-danger"><i class="fa-solid fa-tooth"
                 style="color: #c74848;"></i> Gigiku</a>
 

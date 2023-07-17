@@ -6,6 +6,10 @@
 
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+
+
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 
@@ -65,3 +69,5 @@
 .header .navbar a:hover {
     color: var(--primary);
 }
+
+
