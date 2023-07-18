@@ -18,10 +18,17 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    function index()
+    function home()
     {
         $pageTitle = 'Home';
 
         return view('home', ['pageTitle' => $pageTitle]);
+    }
+
+    function about()
+    {
+        $pageTitle = 'About';
+
+        return view('about', ['pageTitle' => $pageTitle]);
     }
 }
