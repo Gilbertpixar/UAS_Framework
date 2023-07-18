@@ -16,8 +16,9 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
-<header class="navbar navbar-dark sticky-top bg-warning flex-md-nowrap p-3 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+<header class="navbar navbar-dark sticky-top flex-md-nowrap p-3 shadow" style="background-color: #db6565;">
+  
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">gigiku </a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -48,7 +49,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file"></span>
-              Orders
+              List Appointment
             </a>
           </li>
          
@@ -56,7 +57,7 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h3 class="h3">Dashboard | <span style="font-size: smaller; font-style: italic ;color: #5c5c5c;";>selamat datang {{ Auth::user()->name }}</span></h3>
         <div class="btn-toolbar mb-2 mb-md-0">
          
 
