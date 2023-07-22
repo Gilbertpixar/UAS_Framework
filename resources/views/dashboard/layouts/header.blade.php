@@ -1,3 +1,7 @@
+@php
+    $currentRouteName = Route::currentRouteName();
+@endphp
+
 <header class="navbar navbar-dark sticky-top flex-md-nowrap p-3 shadow" style="background-color: #db6565;">
     <ul class="navbar-nav row wrap text-dark text-center">
         <li>

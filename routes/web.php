@@ -1,17 +1,26 @@
 <?php
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ServiceController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->withoutMiddleware('auth');
+
+
+Route::get('/services', function () {
+    // Get categories
+    $categories = \App\Models\Category::latest()->paginate(5);
+
+    // Render view "services" with categories data
+    return view('services', compact('categories'));
+})->name('services');
 
 // Route group for dashboard with "dashboard" prefix
 Route::prefix('dashboard')->middleware('auth')->group(function () {
@@ -32,3 +41,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('dashboard.categories.destroy');
     });
 });
+
+
+Auth::routes();
+
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');

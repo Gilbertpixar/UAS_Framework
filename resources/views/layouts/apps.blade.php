@@ -16,6 +16,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @yield('styles')
+
 </head>
 
 <body>
@@ -25,6 +27,8 @@
             @yield('content')
         </main>
     </div>
+
+    
 </body>
 
 </html>

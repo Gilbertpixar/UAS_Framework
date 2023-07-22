@@ -2,7 +2,7 @@
     $currentRouteName = Route::currentRouteName();
 @endphp
 
-<nav class="navbar navbar-expand-md navbar-dark bg-white shadow fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-white shadow">
     <div class="container">
         <img src="{{ Vite::asset('resources/images/icon.png') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
         <a href="{{ route('home') }}" class="navbar-brand mb-4 mt-3 h1 text-danger"><i class="fa-solid fa-tooth"
@@ -19,18 +19,22 @@
                         class="nav-link text-dark @if ($currentRouteName == 'home') active @endif">Home</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'home') active @endif">About</a></li>
-                <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
-                        class="nav-link text-dark @if ($currentRouteName == 'home') active @endif">Services</a></li>
+                <li class="nav-item col-2 col-md-auto"><a href="{{ route('services') }}"
+                        class="nav-link text-dark @if ($currentRouteName == 'services') active @endif">Services</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'home') active @endif">Our Team</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'home') active @endif">Blog</a></li>
-                <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
-                        class="nav-link text-dark  @if ($currentRouteName == 'home') active @endif">News</a></li>
-                {{-- <li class="nav-item col-2 col-md-auto btn btn-danger px-1"><a href="{{ route('appointment.create') }}"
-                        class="nav-link text-white @if ($currentRouteName == 'appointment.create') active @endif">Make
-                        Appointment</a>
-                </li> --}}
+            
+
+                {{-- Check if user is authenticated kalau belum login hiland dashboardnya--}} 
+            @if (Auth::check())
+            <li class="nav-item col-2 col-md-auto">
+                <a href="{{ route('dashboard.index') }}" class="nav-link text-dark @if ($currentRouteName === 'dashboard.index') active @endif">
+                    Dashboard
+                </a>
+            </li>
+            @endif
             </ul>
 
             <hr class="d-md-none text-white-50">
