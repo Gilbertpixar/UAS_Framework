@@ -11,11 +11,16 @@
 </head>
 
 <body>
+    <img src="{{ Vite::asset('resources/images/rocket.webp') }}" onclick="topFunction()" id="myBtn" title="Go to top" alt="">
+
+    <div id="preloader"></div>
+
     @include('layouts.nav')
     @yield('content')
     @vite('resources/js/app.js')
     {{-- @include('sweetalert::alert') --}}
     @stack('scripts')
+
 
     <section class="footer bg-custom" >
         <div class="container text-center">

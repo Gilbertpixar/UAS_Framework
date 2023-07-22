@@ -5,7 +5,7 @@
 <header class="navbar navbar-dark sticky-top flex-md-nowrap p-3 shadow" style="background-color: #db6565;">
     <ul class="navbar-nav row wrap text-dark text-center">
         <li>
-          <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 @if ($currentRouteName == 'home') active @endif" href="home">gigiku </a>
+          <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 " href="home">gigiku </a>
       
         </li>
         
