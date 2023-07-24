@@ -19,7 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
+Route::post('/welcome', [LoginController::class, 'authenticate']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
