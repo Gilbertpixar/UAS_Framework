@@ -1,8 +1,67 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+// @import url("https://fonts.bunny.net/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+}
+
+.navbar ul {
+    margin-right: 40px; /* Jarak kanan */
+    margin-left: 220px; /* Jarak kiri */
+}
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: url(../images/home.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: fadeInRight; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 3s;
+    --animate-delay: 0.9s;
+}
+
+.home .content {
+    max-width: 60rem;
+    padding-left: 6rem;
+    padding-top: 10rem;
+}
+
+.home .content h3 {
+    font-size: 3.5rem;
+    color: var(--black);
+    line-height: 1.2;
+}
+
+.home .content p {
+    line-height: 2;
+    font-size: 1rem;
+    color: var(--light-color);
+    padding: 1rem 0;
+}
+.header .navbar a {
+    font-size: 1.7rem;
+    color: var(--black);
+    margin: 0 1rem;
+}
+
+.header .navbar a:hover {
+    color: var(--primary);
+}
