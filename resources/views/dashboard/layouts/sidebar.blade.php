@@ -12,18 +12,22 @@
             Dashboard
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="dashboard/appointment">
-            <span class="bi bi-journal-text"></span>
-            List Appointment
-          </a>
-        </li>
-        
+
         <li class="nav-item">
           <a class="nav-link" href="{{ route('dashboard.categories.index') }}">
-            <span class="bi bi-journal-text"></span>
+            <span class="bi bi-tags-fill"></span>
             List Categories
           </a>
         </li>
-       
+
+        <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard.appointments.index') }}">
+              <span class="bi bi-journal-text"></span>
+              List Appointments
+          </a>
+      </li>
+
   </nav>
+
+
+  
