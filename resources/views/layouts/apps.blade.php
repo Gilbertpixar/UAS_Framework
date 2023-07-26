@@ -19,6 +19,8 @@
 </head>
 
 <body>
+    <div id="preloader"></div>
+
     <div id="app">
 
         <main class="py-4">

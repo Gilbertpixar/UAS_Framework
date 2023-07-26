@@ -8,9 +8,6 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-
-
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 
 * {
@@ -70,7 +67,6 @@
     color: var(--primary);
 }
 
-
 /* footer */
 .bg-custom {
     background-color: #dbdbdb;
@@ -84,35 +80,4 @@
     width: 100%;
     z-index: 1001;
     overflow: hidden;
-
-  }
-  
-
-/* button to slip to top */
-#myBtn {
-    display: none;
-    position: fixed;
-    background-color: #71B7E4;
-    /* transform: rotate(-45deg); */
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    /* font-size: 18px; */
-    border: #71B7E4;
-    border-style: solid;
-    width: 5%;
-    /* background-color: #E96C6C;
-    color: white; */
-    cursor: pointer;
-    /* padding: 15px; */
-    border-radius: 2115px;
-  }
-  
-  #myBtn:hover {
-    /* background-color: #555; */
-    background-image: url(/images/rocket.gif );
-    width: 5%;
-    animation: bounce;
-    animation-duration: 2s;
-
 }

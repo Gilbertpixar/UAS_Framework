@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppointmentsController;
+
 
 
 /*
@@ -39,8 +41,18 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         Route::post('/', [CategoryController::class, 'store'])->name('dashboard.categories.store');
         Route::get('/{id}', [CategoryController::class, 'show'])->name('dashboard.categories.show');
         Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('dashboard.categories.edit');
-        Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('dashboard.categories.update');
+        Route::put('/{id}', [CategoryController::class, 'update'])->name('dashboard.categories.update');
         Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('dashboard.categories.destroy');
+    });
+
+    Route::prefix('appointments')->group(function () {
+        Route::get('/', [AppointmentsController::class, 'index'])->name('dashboard.appointments.index');
+        Route::get('/create', [AppointmentsController::class, 'create'])->name('dashboard.appointments.create');
+        Route::post('/', [AppointmentsController::class, 'store'])->name('dashboard.appointments.store');
+        Route::get('/{appointment}', [AppointmentsController::class, 'show'])->name('dashboard.appointments.show');
+        Route::get('/{appointment}/edit', [AppointmentsController::class, 'edit'])->name('dashboard.appointments.edit');
+        Route::put('/{appointment}', [AppointmentsController::class, 'update'])->name('dashboard.appointments.update');
+        Route::delete('/{appointment}', [AppointmentsController::class, 'destroy'])->name('dashboard.appointments.destroy');
     });
 });
 
@@ -57,3 +69,4 @@ Route::post('/welcome', [LoginController::class, 'authenticate']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+
