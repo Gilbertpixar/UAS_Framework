@@ -2,6 +2,7 @@
 
 @section('container')
 <div class="container mt-5">
+    <h1 class="text-center">DAFTAR SERVICE</h1>
     <div class="row">
         <div class="col-md-12">
             <a href="{{ route('dashboard.categories.create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
