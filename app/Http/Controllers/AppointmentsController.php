@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+
 use App\Models\Appointment;
 use App\Models\Category;
 
@@ -10,6 +12,13 @@ class AppointmentsController extends Controller
     public function index()
     {
         $appointments = Appointment::all();
+        foreach ($appointments as $appointment) {
+            $now = Carbon::now();
+            $appointmentDate = Carbon::createFromFormat('Y-m-d', $appointment->appointment_date);
+            $diffInDays = $now->diffInDays($appointmentDate);
+            $appointment->diffInDays = $diffInDays;
+        }
+
         return view('dashboard.appointments.index', compact('appointments'));
     }
 

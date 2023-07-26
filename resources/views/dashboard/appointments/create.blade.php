@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
+
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 py-5">
@@ -18,7 +19,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email:</label>
-                        <input type="email" name="email" class="form-control" required>
+                        <input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}" required readonly>
                     </div>
                     <div class="mb-3">
                         <label for="phone_number" class="form-label">Phone Number:</label>

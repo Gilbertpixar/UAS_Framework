@@ -34,7 +34,7 @@
                             comfort and serenity for patients in getting dental treatments, and we believe with a design
                             created by our designers, can leverage our mission. To begin with, I believe the entire
                             process was a lot of fun. We had the liberty to apply our design sensibilities to the
-                            project while also having the opportunity to experiment with the variety of concepts. We
+                            {{-- project while also having the opportunity to experiment with the variety of concepts. We
                             wanted to embrace the key notion of a clean, bright and soft interior so that people can
                             perceive this project as an example of how dentist clinics operate. The facade was created
                             with the intention of resembling a toothlike facilitation. To symbolize the thoughts, we use
@@ -42,7 +42,7 @@
                             drizzly weather. Rather than avoiding this natural value, we are embracing it as an extra
                             source of light that has come through the building. Another element to consider was the
                             lighting. We use spotlight and indirect light to capture the best view of our interior and
-                            exterior to embrace the natural light and warm mood.</p>
+                            exterior to embrace the natural light and warm mood.</p> --}}
                         <a href="" class="btn">Contact me</a>
                     </div>
                 </div>
