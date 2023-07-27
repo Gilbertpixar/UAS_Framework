@@ -11,7 +11,7 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <form action="{{ route('dashboard.appointments.store') }}" method="post">
+                <form action="{{ route('appointments.store') }}" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>

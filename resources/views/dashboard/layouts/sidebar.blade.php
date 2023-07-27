@@ -21,7 +21,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" style="font-size: 18px;" href="{{ route('dashboard.appointments.index') }}">
+            <a class="nav-link" style="font-size: 18px;" href="{{ route('appointments.index') }}">
               <span class="bi bi-journal-text"></span>
               List Appointments
             </a>
