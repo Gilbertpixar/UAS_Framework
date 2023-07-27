@@ -58,7 +58,7 @@
                                 $whatsappNumber = $appointment->phone_number;
                                 $whatsappUrl = "https://wa.me/" . $whatsappNumber . "?text=" . urlencode($whatsappMessage);
                             @endphp
-                            <a href="{{ $whatsappUrl }}" class="btn btn-sm btn-success" target="_blank">Open WhatsApp</a>
+                            <a href="{{ $whatsappUrl }}" class="btn btn-sm btn-success" target="_blank">Send Reminder</a>
                             
                             </td>
 
