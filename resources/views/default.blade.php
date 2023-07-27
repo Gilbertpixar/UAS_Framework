@@ -10,6 +10,8 @@
                         kepada pasien-pasien kami. Dengan tim dokter gigi yang berpengalaman dan terampil, kami
                         menyediakan berbagai layanan
                         perawatan gigi modern dan inovatif untuk memenuhi kebutuhan kesehatan gigi Anda.</p>
+                        <a href="{{ route('appointments.create') }}" class="btn btn-warning" style="background-color: #db6565;">Make Appointment</a>
+
                     {{-- <a href="#" class="btn btn-primary">make appointment</a> --}}
                 </div>
             </div>

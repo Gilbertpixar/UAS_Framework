@@ -7,7 +7,7 @@
     <div class="container-fluid py-5">
         
         <div class="d-flex justify-content-between mb-4">
-            <h2>Daftar Appointment | {{ date('Y-m-d') }}</h2>
+            <h2>Daftar Appointment | tanggal {{ date('Y-m-d') }}</h2>
 
             <a href="{{ route('appointments.create') }}" class="btn btn-primary">Create Appointment</a>
 
@@ -25,7 +25,8 @@
                         <th>Category</th>
                         <th>Appointment Date</th>
                         <th>Message</th>
-                        <th>Actions</th>
+                        <th>Actions</th>                        <th>Reminder</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -52,13 +53,15 @@
                             </td>
                             <td>
                                 @php
-                                $whatsappMessage = "Hallo Sobat GIGIKU " . $appointment->name . ", kami dari admin gigiku mau mengingatkan kalau appointment anda : " . $appointment->diffInDays . " hari lagi ";
+                                $whatsappMessage = "Hallo Sobat GIGIKU " . $appointment->name . ", kami dari admin gigiku mau mengingatkan kalau appointment anda : " . $appointment->diffInDays . " hari lagi. 
+                                Ingat permasalahan gigi ingat GIGIKU ";
                                 $whatsappNumber = $appointment->phone_number;
                                 $whatsappUrl = "https://wa.me/" . $whatsappNumber . "?text=" . urlencode($whatsappMessage);
                             @endphp
-                            <a href="{{ $whatsappUrl }}" target="_blank">Open WhatsApp</a>
+                            <a href="{{ $whatsappUrl }}" class="btn btn-sm btn-success" target="_blank">Open WhatsApp</a>
+                            
                             </td>
- 
+
                         </tr>
                     @endforeach
                 </tbody>
