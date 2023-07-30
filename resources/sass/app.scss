@@ -18,8 +18,7 @@
     outline: none;
     border: none;
     text-decoration: none;
-    text-transform: capitalize;
-    transition: 0.2s linear;
+    // transition: 0.2s linear;
 }
 
 .navbar ul {
@@ -34,9 +33,9 @@
     background: url(../images/home.jpg) no-repeat;
     background-size: cover;
     background-position: center;
-    animation: fadeInRight; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 3s;
-    --animate-delay: 0.9s;
+    // animation: fadeInRight; /* referring directly to the animation's @keyframe declaration */
+    // animation-duration: 3s;
+    // --animate-delay: 0.9s;
 }
 
 .home .content {
@@ -72,12 +71,47 @@
     background-color: #dbdbdb;
 }
 
-#preloader {
-    position: fixed;
-    background: #91d5f2 url(../images/giphy.webp) no-repeat center;
-    background-size: 30%;
-    height: 100vh;
-    width: 100%;
-    z-index: 1001;
+.wrapper .carousel {
+    font-size: 0px;
+    cursor: pointer;
     overflow: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
 }
+
+.carousel img {
+    height: 340px;
+    padding: 1rem;
+    object-fit: contain;
+    user-select: none;
+    margin-left: 14px;
+    width: calc(100% / 4);
+}
+.carousel img:first-child {
+    margin-left: 0px;
+}
+
+// #preloader {
+//     position: fixed;
+//     background: #91d5f2 url(../images/giphy.webp) no-repeat center;
+//     background-size: 30%;
+//     height: 100vh;
+//     width: 100%;
+//     z-index: 1001;
+//     overflow: hidden;
+// }
+
+// .news .container-news .card {
+//     display: flex;
+//     padding: 1rem;
+//     width: 70%;
+//     background-color: rgb(255, 255, 255);
+//     height: 100rem;
+// }
+
+// .card {
+//     height: auto;
+//     display: flex;
+//     padding: 2rem;
+//     background-color: rgb(255, 255, 255);
+// }

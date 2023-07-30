@@ -14,9 +14,6 @@
                 <div class="text-center">
                     <h1><b>About Us</b></h1>
                 </div>
-                <div class="col-6">
-
-                </div>
                 <div class="row justify-content-around mt-5">
                     <div class="col-6 mt-5">
                         <div class="embed-responsive embed-responsive-16by9 mt-5">
@@ -26,7 +23,7 @@
                                 allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="col-6 mt-4">
+                    <div class="col-6 mt-5">
                         <h3><b>our clinic is made for you to be smiling all the time</b></h3>
                         <p>gigiku is dental clinic base on cirebon. Originally, it was a heritage property that belonged
                             to our family, but we chose to transform the entire ground van to a dentistry clinic because
@@ -43,7 +40,7 @@
                             source of light that has come through the building. Another element to consider was the
                             lighting. We use spotlight and indirect light to capture the best view of our interior and
                             exterior to embrace the natural light and warm mood.</p> --}}
-                        <a href="" class="btn">Contact me</a>
+                            {{-- <a href="" class="btn">Contact me</a> --}}
                     </div>
                 </div>
 
