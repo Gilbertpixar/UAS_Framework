@@ -18,6 +18,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+
     function home()
     {
         $pageTitle = 'Home';
@@ -30,5 +31,26 @@ class HomeController extends Controller
         $pageTitle = 'About';
 
         return view('about', ['pageTitle' => $pageTitle]);
+    }
+
+    function news()
+    {
+        $pageTitle = 'News';
+
+        return view('news', ['pageTitle' => $pageTitle]);
+    }
+
+    // function ourteam()
+    // {
+    //     $pageTitle = 'Ourteam';
+
+    //     return view('ourteam', ['pageTitle' => $pageTitle]);
+    // }
+
+    function blog()
+    {
+        $pageTitle = 'Blog';
+
+        return view('blog', ['pageTitle' => $pageTitle]);
     }
 }

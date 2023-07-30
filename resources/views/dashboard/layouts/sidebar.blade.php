@@ -19,7 +19,12 @@
             List Categories
           </a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" style="font-size: 18px;" href="{{ route('rosters.index') }}">
+            <span class="bi bi-people-fill"></span>
+            List rosters
+          </a>
+    </li>
         <li class="nav-item">
             <a class="nav-link" style="font-size: 18px;" href="{{ route('appointments.index') }}">
               <span class="bi bi-journal-text"></span>

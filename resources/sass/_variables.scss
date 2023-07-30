@@ -5,3 +5,8 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+.card-img-top {
+    height: 300px; /* Atur tinggi gambar sesuai kebutuhan */
+    object-fit: cover; /* Pastikan gambar mempertahankan aspek rasio dan mengisi kotak gambar secara penuh */
+}

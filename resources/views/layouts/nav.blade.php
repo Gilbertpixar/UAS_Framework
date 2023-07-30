@@ -27,13 +27,13 @@
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('about') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'about') active @endif">About</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('services') }}"
-                            class="nav-link text-dark @if ($currentRouteName == 'services') active @endif">Services</a></li>
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
+                        class="nav-link text-dark @if ($currentRouteName == 'services') active @endif">Services</a></li>
+                <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'home') active @endif">Our Team</a></li>
-                <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
-                        class="nav-link text-dark @if ($currentRouteName == 'home') active @endif">Blog</a></li>
-                <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
-                        class="nav-link text-dark  @if ($currentRouteName == 'home') active @endif">News</a></li>
+                <li class="nav-item col-2 col-md-auto"><a href="{{ route('blog') }}"
+                        class="nav-link text-dark @if ($currentRouteName == 'blog') active @endif">Blog</a></li>
+                <li class="nav-item col-2 col-md-auto"><a href="{{ route('news') }}"
+                        class="nav-link text-dark  @if ($currentRouteName == 'news') active @endif">News</a></li>
                 {{-- <li class="nav-item col-2 col-md-auto btn btn-danger px-1"><a href="{{ route('appointment.create') }}"
                         class="nav-link text-white @if ($currentRouteName == 'appointment.create') active @endif">Make
                         Appointment</a>
@@ -101,15 +101,13 @@
                         <a class="dropdown-item" href="{{ route('about') }}">
                             <i class="bi-person-fill me-1"></i> My Profile
                         </a> --}}
-
-
             </div>
             </li>
         @endguest
         </ul>
     </div>
     </div>
-    <div class="mb-5"></div>
+    {{-- <div class="mb-5"></div> --}}
 
 
 </nav>
