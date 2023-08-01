@@ -5,9 +5,10 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h1>Edit Appointment</h1>
-                <form action="{{ route('dashboard.appointments.update', $appointment->id) }}" method="POST">
-                    @csrf
+                <form action="{{ route('appointments.update', ['appointment' => $appointment->id]) }}" method="post">
                     @method('PUT')
+                    @csrf
+                
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" name="name" id="name" class="form-control" value="{{ $appointment->name }}" required>

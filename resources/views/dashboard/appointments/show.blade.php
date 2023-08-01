@@ -13,7 +13,7 @@
                         <p><strong>Category:</strong> {{ $appointment->category->name }}</p>
                         <p><strong>Appointment Date:</strong> {{ $appointment->appointment_date }}</p>
                         <p><strong>Message:</strong> {{ $appointment->message }}</p>
-                        <a href="{{ route('dashboard.appointments.index') }}" class="btn btn-secondary">Back to List</a>
+                        <a href="{{ route('appointments.index') }}" class="btn btn-secondary">Back to List</a>
                     </div>
                 </div>
             </div>

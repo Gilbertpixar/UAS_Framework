@@ -15,7 +15,7 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="appointmentTable">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -69,3 +69,12 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script type="module">
+$(document).ready(function() {
+    $('#appointmentTable').DataTable();
+});
+</script>
+@endpush
+

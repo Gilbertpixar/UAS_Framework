@@ -28,8 +28,8 @@
                         class="nav-link text-dark @if ($currentRouteName == 'about') active @endif">About</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('services') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'services') active @endif">Services</a></li>
-                <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}"
-                        class="nav-link text-dark @if ($currentRouteName == 'home') active @endif">Our Team</a></li>
+                <li class="nav-item col-2 col-md-auto"><a href="{{ route('ourteam') }}"
+                        class="nav-link text-dark @if ($currentRouteName == '/ourteam') active @endif">Our Team</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('blog') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'blog') active @endif">Blog</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('news') }}"

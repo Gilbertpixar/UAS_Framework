@@ -66,7 +66,7 @@ class AppointmentsController extends Controller
         $appointment->category()->associate($category);
         $appointment->save();
 
-        return redirect()->route('appointments.create')->with('success', 'Appointment berhasil dibuat!');
+        return redirect()->route('appointments.index')->with('success', 'Appointment berhasil dibuat!');
     }
 
     public function update(Request $request, $id)
@@ -93,7 +93,7 @@ class AppointmentsController extends Controller
             'category_id' => $validatedData['category'],
         ]);
 
-        return redirect()->route('dashboard.appointments.index')->with('success', 'Appointment berhasil diperbarui!');
+        return redirect()->route('appointments.index')->with('success', 'Appointment berhasil diperbarui!');
     }
 
     public function destroy($id)
@@ -101,6 +101,6 @@ class AppointmentsController extends Controller
         $appointment = Appointment::findOrFail($id);
         $appointment->delete();
 
-        return redirect()->route('dashboard.appointments.index')->with('success', 'Appointment berhasil dihapus!');
+        return redirect()->route('appointments.index')->with('success', 'Appointment berhasil dihapus!');
     }
 }
