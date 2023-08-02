@@ -29,17 +29,13 @@
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('services') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'services') active @endif">Services</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('ourteam') }}"
-                        class="nav-link text-dark @if ($currentRouteName == '/ourteam') active @endif">Our Team</a></li>
+                        class="nav-link text-dark @if ($currentRouteName == 'ourteam') active @endif">Our Team</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('blog') }}"
                         class="nav-link text-dark @if ($currentRouteName == 'blog') active @endif">Blog</a></li>
                 <li class="nav-item col-2 col-md-auto"><a href="{{ route('news') }}"
                         class="nav-link text-dark  @if ($currentRouteName == 'news') active @endif">News</a></li>
-                {{-- <li class="nav-item col-2 col-md-auto btn btn-danger px-1"><a href="{{ route('appointment.create') }}"
-                        class="nav-link text-white @if ($currentRouteName == 'appointment.create') active @endif">Make
-                        Appointment</a>
-                </li> --}}
             </ul>
-
+            
             <hr class="d-md-none text-white-50">
 
             <ul class="navbar-nav ms-auto">
