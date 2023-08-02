@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Roster;
 
 
@@ -8,18 +9,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-
 
     function home()
     {
@@ -27,7 +16,6 @@ class HomeController extends Controller
 
         return view('home', ['pageTitle' => $pageTitle]);
     }
-
     function about()
     {
         $pageTitle = 'About';
@@ -55,4 +43,9 @@ class HomeController extends Controller
 
         return view('blog', ['pageTitle' => $pageTitle]);
     }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
 }
