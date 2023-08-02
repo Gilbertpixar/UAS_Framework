@@ -2,9 +2,6 @@
 
 @section('content')
 
-
-
-    @include('default')
-    
+    @include('default')    
     
 @endsection
