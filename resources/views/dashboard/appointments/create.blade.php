@@ -1,8 +1,8 @@
-@extends('dashboard.layouts.main')
+@extends('layouts.app')
 
-@section('container')
+{{-- @section('container') --}}
 
-    <div class="container">
+    <div class="container mt-5 py-5">
         <div class="row">
             <div class="col-md-6 offset-md-3 py-5">
                 <h2>Buat Appointment Baru</h2>
@@ -47,4 +47,3 @@
             </div>
         </div>
     </div>
-@endsection

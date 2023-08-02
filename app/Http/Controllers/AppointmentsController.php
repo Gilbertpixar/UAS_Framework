@@ -34,8 +34,10 @@ class AppointmentsController extends Controller
 
     public function create()
     {
+        $pageTitle = 'Buat Appointment Baru'; // Set the page title here
+
         $categories = Category::all();
-        return view('dashboard.appointments.create', compact('categories'));
+        return view('dashboard.appointments.create', compact('pageTitle', 'categories'));
     }
 
     public function store(Request $request)
