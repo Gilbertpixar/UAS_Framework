@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
-<section class="blog mt-5" id="blog">
-
+<section class="blog mt-5 py-1" id="blog">
     <div class="container mt-5">
         <div class="row">
             <div class="content showing mt-5">
                 <div class="text-center">
                     <h1><b>Our Blogs</b></h1>
                 </div>
-                <div class="row justify-content-around mt-5">
+                <div class="row justify-content-around mt-1">
                     <div class="col-4 mt-4">
                         {{-- <div class="box"> --}}
                         <blockquote class="instagram-media"

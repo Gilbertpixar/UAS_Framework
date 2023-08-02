@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-<section class="news mt-5" id="news">
-
+<section class="news mt-5 py-5" id="news">
     <div class="container mt-5 pt-1">
         <div class="row">
-            <div class="content showing mt-5">
+            <h1 class="text-center">NEWS </h1>
+            <div class="content showing mt-1">
                 <div class="row justify-content-around mt-5">
                     <div class="col-3 mb-4">
                         <img src="./images/blog/image1.png" alt="" width="220" height="180" mt-5>
