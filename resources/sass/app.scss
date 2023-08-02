@@ -37,11 +37,41 @@
     // animation-duration: 3s;
     // --animate-delay: 0.9s;
 }
-
+.custom-bg-image {
+    background-image: url("../images/pak_oki.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1rem 0 0 1rem;
+}
 .home .content {
     max-width: 60rem;
     padding-left: 6rem;
     padding-top: 10rem;
+}
+
+.vh-100 {
+    min-height: 100vh;
+    position: relative; /* Add this for positioning */
+    display: flex;
+    align-items: center;
+    background: url(../images/home.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.vh-100::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/home.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    z-index: -2; /* Make sure the pseudo-element is behind the content */
 }
 
 .home .content h3 {
