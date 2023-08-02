@@ -10,12 +10,10 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     //
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 
     function home()
@@ -24,7 +22,6 @@ class HomeController extends Controller
 
         return view('home', ['pageTitle' => $pageTitle]);
     }
-
     function about()
     {
         $pageTitle = 'About';
@@ -52,4 +49,9 @@ class HomeController extends Controller
 
         return view('blog', ['pageTitle' => $pageTitle]);
     }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
 }

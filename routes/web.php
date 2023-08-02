@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RostersController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NavControllerontroller;
+
 // use App\Http\Controllers\NewsController;
 
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +54,6 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     // Route::resource handles all the appointments routes automatically
     Route::resource('appointments', AppointmentsController::class);
     Route::resource('rosters', RostersController::class);
-    
 });
 Route::get('appointments/getData', [AppointmentsController::class, 'getData'])->name('appointments.getData');
 
@@ -71,5 +72,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name(
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/news', [App\Http\Controllers\HomeController::class, 'news'])->name('news');
 Route::get('/blog', [App\Http\Controllers\HomeController::class, 'blog'])->name('blog');
-
 Route::get('/ourteam', [HomeController::class, 'ourteam'])->name('ourteam');
