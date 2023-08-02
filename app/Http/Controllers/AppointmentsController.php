@@ -68,7 +68,7 @@ class AppointmentsController extends Controller
         $appointment->category()->associate($category);
         $appointment->save();
 
-        return redirect()->route('appointments.index')->with('success', 'Appointment berhasil dibuat!');
+        return redirect()->route('home')->with('success', 'Appointment berhasil dibuat!');
     }
 
     public function update(Request $request, $id)
