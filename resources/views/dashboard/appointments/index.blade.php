@@ -15,7 +15,7 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered" id="appointmentTable">
+            <table class="table table-bordered datatable" id="appointmentTable">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -46,7 +46,7 @@
                                 <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this appointment?')">Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-delete" onclick="return confirm('Are you sure you want to delete this appointment?')">Delete</button>
                                 </form>
                                 
 
@@ -73,8 +73,24 @@
 @push('scripts')
 <script type="module">
 $(document).ready(function() {
-    $('#appointmentTable').DataTable();
+...
+$(".datatable").on("click", ".btn-delete", function (e) {
+e.preventDefault();
+var form = $(this).closest("form");
+var name = $(this).data("name");
+Swal.fire({
+title: "Are you sure want to delete\n" + name + "?",
+text: "You won't be able to revert this!",
+icon: "warning",
+showCancelButton: true,
+confirmButtonClass: "bg-primary",
+confirmButtonText: "Yes, delete it!",
+}).then((result) => {
+if (result.isConfirmed) {
+form.submit();
+}
+});
+});
 });
 </script>
 @endpush
-

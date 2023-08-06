@@ -32,6 +32,7 @@
 
      @yield('container')
 
+     @include('sweetalert::alert')
 
      @stack('scripts')
 

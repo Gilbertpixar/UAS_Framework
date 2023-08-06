@@ -7,4 +7,7 @@ $pageTitle = 'Home'; // Set the page title here
 @section('content')
 
     @include('default')
+
 @endsection
+
+

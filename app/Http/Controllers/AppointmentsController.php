@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use App\Models\Appointment;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AppointmentsController extends Controller
 {
@@ -28,6 +29,7 @@ class AppointmentsController extends Controller
             $whatsappUrl = "https://wa.me/" . $whatsappNumber . "?text=" . urlencode($whatsappMessage);
             $appointment->whatsappUrl = $whatsappUrl;
         }
+        confirmDelete();
 
         return view('dashboard.appointments.index', compact('appointments'));
     }
@@ -68,6 +70,8 @@ class AppointmentsController extends Controller
         $appointment->category()->associate($category);
         $appointment->save();
 
+        Alert::success('Added Successfully', 'Appointment berhasil di buat.');
+
         return redirect()->route('home')->with('success', 'Appointment berhasil dibuat!');
     }
 
@@ -94,6 +98,7 @@ class AppointmentsController extends Controller
             'appointment_date' => $validatedData['appointment_date'],
             'category_id' => $validatedData['category'],
         ]);
+        Alert::success('Added Successfully', 'Appointment  berhasil di Edit.');
 
         return redirect()->route('appointments.index')->with('success', 'Appointment berhasil diperbarui!');
     }
@@ -102,6 +107,8 @@ class AppointmentsController extends Controller
     {
         $appointment = Appointment::findOrFail($id);
         $appointment->delete();
+        Alert::success('Added Successfully', 'Appointment  berhasil di Delete.');
+
 
         return redirect()->route('appointments.index')->with('success', 'Appointment berhasil dihapus!');
     }
