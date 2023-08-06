@@ -15,8 +15,9 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered datatable" id="appointmentTable">
-                <thead>
+            <table class="table table-bordered table-hover table-striped mb-0 bg-white"
+            id="appointmentTable">
+                    <thead>
                     <tr>
                         <th>No</th>
                         <th>Name</th>
@@ -43,13 +44,15 @@
                                 <a href="{{ route('appointments.show', $appointment->id) }}" class="btn btn-sm btn-info">View</a>
                                 <a href="{{ route('appointments.edit', $appointment->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                 
-                                <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST"
+                                    class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger btn-delete" onclick="return confirm('Are you sure you want to delete this appointment?')">Delete</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-delete"
+                                        onclick="return confirm('Are you sure you want to delete this appointment?')">
+                                        Delete
+                                    </button>
                                 </form>
-                                
-
                             </td>
                             <td>
                                 @php
@@ -70,27 +73,35 @@
     </div>
 @endsection
 
+
 @push('scripts')
 <script type="module">
 $(document).ready(function() {
-...
-$(".datatable").on("click", ".btn-delete", function (e) {
-e.preventDefault();
-var form = $(this).closest("form");
-var name = $(this).data("name");
-Swal.fire({
-title: "Are you sure want to delete\n" + name + "?",
-text: "You won't be able to revert this!",
-icon: "warning",
-showCancelButton: true,
-confirmButtonClass: "bg-primary",
-confirmButtonText: "Yes, delete it!",
-}).then((result) => {
-if (result.isConfirmed) {
-form.submit();
-}
+    $('#appointmentTable').DataTable();
 });
-});
+</script>
+@endpush
+
+@push('scripts')
+<script type="module">
+$(document).ready(function() {
+    $(".datatable").on("click", ".btn-delete", function (e) {
+        e.preventDefault();
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        Swal.fire({
+            title: "Are you sure want to delete\n" + name + "?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "bg-primary",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
 });
 </script>
 @endpush

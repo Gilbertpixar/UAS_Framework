@@ -1,12 +1,12 @@
-// Fonts
-// @import url("https://fonts.bunny.net/css?family=Nunito");
-
 // Variables
-@import "variables";
+// @import "variables";
 
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.css";
+
+@import "datatables.net-bs5/css/dataTables.bootstrap5.css";
+@import "datatables.net-buttons-bs5/css/buttons.bootstrap5.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 

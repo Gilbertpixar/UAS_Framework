@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\Appointment;
@@ -34,6 +35,34 @@ class AppointmentsController extends Controller
         return view('dashboard.appointments.index', compact('appointments'));
     }
 
+    public function getData(Request $request)
+    {
+        $appointments = Appointment::with('category');
+    
+        if ($request->ajax()) {
+            return datatables()
+                ->of($appointments)
+                ->addIndexColumn()
+                ->addColumn('category', function ($appointment) {
+                    return $appointment->category->title;
+                })
+                ->addColumn('diffInDays', function ($appointment) {
+                    $now = Carbon::now();
+                    $appointmentDate = Carbon::createFromFormat('Y-m-d', $appointment->appointment_date);
+                    return $now->diffInDays($appointmentDate);
+                })
+                // ->addColumn('actions', function ($appointment) {
+                //     return view('dashboard.appointments.actions', compact('appointment'));
+                // })
+                ->addColumn('reminder', function ($appointment) {
+                    $whatsappMessage = "Hallo Sobat GIGIKU " . $appointment->name . ", kami dari admin gigiku mau mengingatkan kalau appointment anda : " . $appointment->diffInDays . " hari lagi. Ingat permasalahan gigi ingat GIGIKU ";
+                    $whatsappNumber = $appointment->phone_number;
+                    $whatsappUrl = "https://wa.me/" . $whatsappNumber . "?text=" . urlencode($whatsappMessage);
+                    return '<a href="' . $whatsappUrl . '" class="btn btn-sm btn-success" target="_blank">Send Reminder</a>';
+                })
+                ->toJson();
+        }
+    }
     public function create()
     {
         $pageTitle = 'Buat Appointment Baru'; // Set the page title here
@@ -76,31 +105,51 @@ class AppointmentsController extends Controller
     }
 
     public function update(Request $request, $id)
+{
+
+    $validatedData = $request->validate([
+        'name' => 'required|string',
+        'email' => 'required|email',
+        'phone_number' => 'required|string|regex:/^0\d+$/',
+        'category' => 'required|exists:categories,id',
+        'message' => 'required|string',
+        'appointment_date' => 'required|date',
+    ]);
+
+    // Menghapus angka "0" di awal nomor telepon dan menambahkan prefix "+62"
+    $phone_number = '+62' . substr($validatedData['phone_number'], 1);
+
+    $appointment = Appointment::findOrFail($id);
+
+    $appointment->update([
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'phone_number' => $phone_number,
+        'message' => $validatedData['message'],
+        'appointment_date' => $validatedData['appointment_date'],
+        'category_id' => $validatedData['category'],
+    ]);
+
+    Alert::success('Added Successfully', 'Appointment berhasil di Edit.');
+
+    return redirect()->route('appointments.index')->with('success', 'Appointment berhasil diperbarui!');
+}
+
+public function show($id)
+{
+    // Retrieve the appointment from the database using the $id
+    $appointment = Appointment::findOrFail($id);
+    $categories = Category::all();
+
+    // Return the view to display the appointment details
+    return view('dashboard.appointments.show', compact('appointment'));
+}
+    public function edit($id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'phone_number' => 'required|string|regex:/^0\d+$/',
-            'category' => 'required|exists:categories,id',
-            'message' => 'required|string',
-            'appointment_date' => 'required|date',
-        ]);
-
-        // Menghapus angka "0" di awal nomor telepon dan menambahkan prefix "+62"
-        $phone_number = '+62' . substr($validatedData['phone_number'], 1);
-
         $appointment = Appointment::findOrFail($id);
-        $appointment->update([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'phone_number' => $phone_number,
-            'message' => $validatedData['message'],
-            'appointment_date' => $validatedData['appointment_date'],
-            'category_id' => $validatedData['category'],
-        ]);
-        Alert::success('Added Successfully', 'Appointment  berhasil di Edit.');
-
-        return redirect()->route('appointments.index')->with('success', 'Appointment berhasil diperbarui!');
+        $categories = Category::all();
+    
+        return view('dashboard.appointments.edit', compact('appointment', 'categories'));
     }
 
     public function destroy($id)

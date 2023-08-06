@@ -58,6 +58,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('appointments', AppointmentsController::class);
     Route::resource('rosters', RostersController::class);
 });
+
+
 Route::get('appointments/getData', [AppointmentsController::class, 'getData'])->name('appointments.getData');
 
 
