@@ -9,6 +9,8 @@ use App\Models\Appointment;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
+
 
 class AppointmentsController extends Controller
 {
@@ -36,33 +38,27 @@ class AppointmentsController extends Controller
     }
 
     public function getData(Request $request)
-    {
-        $appointments = Appointment::with('category');
+{
+    $appointments = Appointment::with('category');
     
-        if ($request->ajax()) {
-            return datatables()
-                ->of($appointments)
-                ->addIndexColumn()
-                ->addColumn('category', function ($appointment) {
-                    return $appointment->category->title;
-                })
-                ->addColumn('diffInDays', function ($appointment) {
-                    $now = Carbon::now();
-                    $appointmentDate = Carbon::createFromFormat('Y-m-d', $appointment->appointment_date);
-                    return $now->diffInDays($appointmentDate);
-                })
-                // ->addColumn('actions', function ($appointment) {
-                //     return view('dashboard.appointments.actions', compact('appointment'));
-                // })
-                ->addColumn('reminder', function ($appointment) {
-                    $whatsappMessage = "Hallo Sobat GIGIKU " . $appointment->name . ", kami dari admin gigiku mau mengingatkan kalau appointment anda : " . $appointment->diffInDays . " hari lagi. Ingat permasalahan gigi ingat GIGIKU ";
-                    $whatsappNumber = $appointment->phone_number;
-                    $whatsappUrl = "https://wa.me/" . $whatsappNumber . "?text=" . urlencode($whatsappMessage);
-                    return '<a href="' . $whatsappUrl . '" class="btn btn-sm btn-success" target="_blank">Send Reminder</a>';
-                })
-                ->toJson();
-        }
+    if ($request->ajax()) {
+        return datatables()->of($appointments)
+            ->addIndexColumn()
+            ->addColumn('actions', function($appointment) {
+                return view('dashboard.appointments.actions', compact('appointment'));
+            })
+            ->addColumn('reminder', function($appointment) {
+                $whatsappMessage = "Hallo Sobat GIGIKU " . $appointment->name . ", kami dari admin gigiku mau mengingatkan kalau appointment anda : " . $appointment->diffInDays . " hari lagi. Ingat permasalahan gigi ingat GIGIKU ";
+                $whatsappNumber = $appointment->phone_number;
+                $whatsappUrl = "https://wa.me/" . $whatsappNumber . "?text=" . urlencode($whatsappMessage);
+                return '<a href="' . $whatsappUrl . '" class="btn btn-sm btn-success" target="_blank">Send Reminder</a>';
+            })
+            ->toJson();
     }
+    
+    return view('dashboard.appointments.index'); // Jika bukan permintaan Ajax, tampilkan tampilan biasa
+}
+
     public function create()
     {
         $pageTitle = 'Buat Appointment Baru'; // Set the page title here
@@ -70,6 +66,7 @@ class AppointmentsController extends Controller
         $categories = Category::all();
         return view('dashboard.appointments.create', compact('pageTitle', 'categories'));
     }
+
 
     public function store(Request $request)
     {

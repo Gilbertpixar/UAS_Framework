@@ -4,13 +4,11 @@
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\RostersController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NavControllerontroller;
-
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RostersController;
 // use App\Http\Controllers\NewsController;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +33,7 @@ Route::get('/', function () {
 Route::get('profile', [ProfileController::class, '__invoke'])->name('profile');
 
 // Route group for dashboard with "dashboard" prefix
-Route::prefix('dashboard')->middleware('auth')->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // Dashboard index route
 
     Route::get('/', function () {
@@ -55,10 +53,18 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     });
 
     // Route::resource handles all the appointments routes automatically
-    Route::resource('appointments', AppointmentsController::class);
     Route::resource('rosters', RostersController::class);
+    // Route::get('/getAppointments', [AppointmentsController::class, 'getData'])->name('getAppointments');
+    Route::get('getAppointments', [EAppointmentsController::class, 'getData'])->name('Appointments.getData');
+
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard/appointments/create', [AppointmentsController::class, 'create'])->name('dashboard.appointments.create');
+    // ... tambahkan rute lain yang memerlukan autentikasi di sini ...
+    Route::resource('appointments', AppointmentsController::class);
+
+});
 
 Route::get('appointments/getData', [AppointmentsController::class, 'getData'])->name('appointments.getData');
 

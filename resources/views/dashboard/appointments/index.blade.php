@@ -14,31 +14,29 @@
             
         </div>
 
-        <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped mb-0 bg-white"
             id="appointmentTable">
                     <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Category</th>
-                        <th>Appointment Date</th>
-                        <th>Message</th>
-                        <th>Actions</th>                        <th>Reminder</th>
-
+                    <tr class="text-center">
+                    <th>ID</th>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Category</th>
+                    <th>Appointment Date</th>
+                    <th>Message</th>
+                    <th>Actions</th>
+                    <th>Reminder</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($appointments as $appointment)
-                        <tr>
+                            <tr class="text-center">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $appointment->name }}</td>
-                            <td>{{ $appointment->email }}</td>
                             <td>{{ $appointment->phone_number }}</td>
                             <td>{{ $appointment->category->title }}</td>
-                            <td>{{ $appointment->diffInDays }} Hari Lagi</td>
+                            <td>{{ $appointment->appointment_date }} Hari Lagi</td>
                             <td>{{ $appointment->message }}</td>
                             <td>
                                 <a href="{{ route('appointments.show', $appointment->id) }}" class="btn btn-sm btn-info">View</a>
@@ -69,7 +67,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
     </div>
 @endsection
 
@@ -77,10 +74,31 @@
 @push('scripts')
 <script type="module">
 $(document).ready(function() {
-    $('#appointmentTable').DataTable();
+    $("#appointmentTable").DataTable({
+        serverSide: true,
+        processing: true,
+        ajax: "getAppointments",
+        columns: [
+            { data: "id", name: "id", visible: false },
+            { data: "DT_RowIndex", name: "DT_RowIndex", orderable: false, searchable: false },
+            { data: "name", name: "name" },
+            { data: "phone_number", name: "phone_number" },
+            { data: "category.title", name: "category.title" },
+            { data: "appointment_date", name: "appointment_date" },
+            { data: "message", name: "message" },
+            { data: "actions", name: "actions", orderable: false, searchable: false },
+            { data: "reminder", name: "reminder", orderable: false, searchable: false },
+        ],
+        order: [[0, "desc"]],
+        lengthMenu: [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"],
+        ],
+    });
 });
 </script>
 @endpush
+
 
 @push('scripts')
 <script type="module">
