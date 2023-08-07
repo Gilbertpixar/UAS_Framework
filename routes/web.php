@@ -4,12 +4,11 @@
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\RostersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NavControllerontroller;
-
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RostersController;
 // use App\Http\Controllers\NewsController;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +30,12 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('profile', [ProfileController::class, '__invoke'])->name('profile');
 
 // Route group for dashboard with "dashboard" prefix
-Route::prefix('dashboard')->middleware('auth')->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // Dashboard index route
+
     Route::get('/', function () {
         return view('dashboard.index');
     })->name('dashboard.index');
@@ -52,21 +53,32 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     });
 
     // Route::resource handles all the appointments routes automatically
-    Route::resource('appointments', AppointmentsController::class);
     Route::resource('rosters', RostersController::class);
+    // Route::get('/getAppointments', [AppointmentsController::class, 'getData'])->name('getAppointments');
+    Route::get('/getAppointments', 'AppointmentsController@getData')->name('getData');
+
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard/appointments/create', [AppointmentsController::class, 'create'])->name('dashboard.appointments.create');
+    // ... tambahkan rute lain yang memerlukan autentikasi di sini ...
+    Route::resource('appointments', AppointmentsController::class);
+
+});
+
 Route::get('appointments/getData', [AppointmentsController::class, 'getData'])->name('appointments.getData');
 
 
 Route::get('/services', function () {
-    $pageTitle = "Our Services"; // Inisialisasi variabel $pageTitle
+    $pageTitle = "Our Services"; 
     $categories = \App\Models\Category::latest()->paginate(5);
     return view('services', compact('pageTitle', 'categories'));
-})->name('services'); // Berikan nama rute 'services' pada rute ini
+})->name('services');
 
+
+Auth::routes();
 
 Route::post('/welcome', [LoginController::class, 'authenticate']);
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');

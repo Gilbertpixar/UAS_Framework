@@ -1,11 +1,16 @@
 @extends('layouts.app') <!-- Assuming you have a layout file for the app -->
 
 @section('content')
+<section class="ourteam my-5 pt-1" id="ourteam"
+style="background-color: rgb(218, 218, 218)"
+>
 <div class="container mt-5 mb-5 py-5">
 {{-- <div class="row"> --}}
     {{-- <div class="col-md-12"> --}}
         <div class="card border-0 rounded">
-            <div class="card-body">
+            <div class="card-body"
+            style="background-color: rgb(218, 218, 218)"
+            >
                 <h1 class="font-weight-bold mb-3 text-center">Daftar Roster</h1>
                 <div class="row">
                     @foreach($rosters as $roster)
@@ -29,6 +34,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 @endsection

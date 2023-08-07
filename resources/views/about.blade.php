@@ -1,29 +1,31 @@
 @extends('layouts.app')
 
-<section class="about mt-5" id="about">
+<section class="about my-5 pt-1" id="about"
+style="background-color: rgb(231, 231, 231)"
+>
 
     {{-- <h1 class="heading mt-5"> a </h1> --}}
-    <div class="container mt-5">
+    <div class="container my-5 ">
         <div class="row">
 
             {{-- <div class="image">
                     <img src="images/tempat.png" alt="" loading="lazy">
                 </div> --}}
 
-            <div class="content showing mt-5">
+            <div class="content showing my-5 ">
                 <div class="text-center">
                     <h1><b>About Us</b></h1>
                 </div>
                 <div class="row justify-content-around mt-5">
-                    <div class="col-6 mt-5">
-                        <div class="embed-responsive embed-responsive-16by9 mt-5">
+                    <div class="col-6 mt-3">
+                        <div class="embed-responsive embed-responsive-16by9 mt-1">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/iw9FLSIrYn8"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="col-6 mt-5">
+                    <div class="col-6 mt-3">
                         <h3><b>our clinic is made for you to be smiling all the time</b></h3>
                         <p>gigiku is dental clinic base on cirebon. Originally, it was a heritage property that belonged
                             to our family, but we chose to transform the entire ground van to a dentistry clinic because

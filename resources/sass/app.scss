@@ -1,12 +1,12 @@
-// Fonts
-// @import url("https://fonts.bunny.net/css?family=Nunito");
-
 // Variables
-@import "variables";
+// @import "variables";
 
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.css";
+
+@import "datatables.net-bs5/css/dataTables.bootstrap5.css";
+@import "datatables.net-buttons-bs5/css/buttons.bootstrap5.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 
@@ -17,7 +17,7 @@
     box-sizing: border-box;
     outline: none;
     border: none;
-    text-decoration: none;
+    // text-decoration: none;
     // transition: 0.2s linear;
 }
 
@@ -37,11 +37,41 @@
     // animation-duration: 3s;
     // --animate-delay: 0.9s;
 }
-
+.custom-bg-image {
+    background-image: url("../images/pak_oki.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1rem 0 0 1rem;
+}
 .home .content {
     max-width: 60rem;
     padding-left: 6rem;
     padding-top: 10rem;
+}
+
+.vh-100 {
+    min-height: 100vh;
+    position: relative; /* Add this for positioning */
+    display: flex;
+    align-items: center;
+    background: url(../images/home.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.vh-100::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../images/home.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    z-index: -2; /* Make sure the pseudo-element is behind the content */
 }
 
 .home .content h3 {
@@ -115,3 +145,38 @@
 //     padding: 2rem;
 //     background-color: rgb(255, 255, 255);
 // }
+
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+}
+
+.footer h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.footer p {
+    font-size: 16px;
+    color: #666;
+}
+
+.footer .box {
+    padding: 20px;
+}
+
+.footer .share a {
+    color: #333;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.credit {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #666;
+}
