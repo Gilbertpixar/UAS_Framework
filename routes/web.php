@@ -55,7 +55,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // Route::resource handles all the appointments routes automatically
     Route::resource('rosters', RostersController::class);
     // Route::get('/getAppointments', [AppointmentsController::class, 'getData'])->name('getAppointments');
-    Route::get('getAppointments', [EAppointmentsController::class, 'getData'])->name('Appointments.getData');
+    Route::get('/getAppointments', 'AppointmentsController@getData')->name('getData');
 
 });
 

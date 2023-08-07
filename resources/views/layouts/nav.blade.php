@@ -39,21 +39,22 @@
             <hr class="d-md-none text-white-50">
 
             <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
-                @guest
-                    <!-- Jika pengguna tidak terautentikasi (belum login) -->
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
-
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
+               <!-- Authentication Links -->
+               @guest
+               <!-- Jika pengguna tidak terautentikasi (belum login) -->
+               @if (Route::has('login'))
+                   <li class="nav-item">
+                       <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
+                   </li>
+               @endif
+           
+               <!-- Tampilkan tombol Register jika route 'register' ada -->
+               @if (Route::has('register'))
+                   <li class="nav-item">
+                       <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
+                   </li>
+               @endif
+           @else
                     <!-- Jika pengguna terautentikasi (sudah login) -->
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button"
@@ -64,6 +65,10 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="bi-person-fill me-1"></i> My Profile
+                            </a>
+
+                            <a class="dropdown-item" href="{{ route('dashboard.index') }}">
+                                <i class="bi bi-pc-display"></i> Dashboard
                             </a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
