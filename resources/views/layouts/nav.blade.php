@@ -67,9 +67,11 @@
                                 <i class="bi-person-fill me-1"></i> My Profile
                             </a>
 
+                            @if(auth()->check() && auth()->user()->role === 'admin')
                             <a class="dropdown-item" href="{{ route('dashboard.index') }}">
                                 <i class="bi bi-pc-display"></i> Dashboard
                             </a>
+                        @endif
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
