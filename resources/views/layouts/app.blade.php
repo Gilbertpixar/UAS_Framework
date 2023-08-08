@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,9 +48,9 @@
         <div class="credit">created by <a href="https://www.instagram.com/gigiku.co/" target="_blank">gigiku</a> | all
             rights reserved!</div>
     </section>
-    
+
     @vite('resources/js/app.js')
-    @include('sweetalert::alert')
+    {{-- @include('sweetalert::alert') --}}
     @stack('scripts')
 </body>
 

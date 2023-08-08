@@ -10,7 +10,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
 
     <title>{{ config('app.name', 'GIGIKU') }}</title>
 
@@ -21,27 +21,29 @@
 
 
 </head>
+
 <body>
-@include('dashboard.layouts.header')
+    @include('dashboard.layouts.header')
 
-<div class="container-fluid">
-  <div class="row">
+    <div class="container-fluid">
+        <div class="row">
 
-    @include('dashboard.layouts.sidebar')
+            @include('dashboard.layouts.sidebar')
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-5">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-5">
 
-     @yield('container')
+                @yield('container')
 
-     @stack('scripts')
+                @stack('scripts')
 
-     @include('sweetalert::alert')
+                {{-- @include('sweetalert::alert') --}}
 
-     
 
-    </main>
-  </div>
-</div>
+
+            </main>
+        </div>
+    </div>
 
 </body>
+
 </html>

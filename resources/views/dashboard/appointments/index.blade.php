@@ -2,19 +2,21 @@
 
 
 @section('container')
-
     <div class="container-fluid py-5">
 
         <div class="d-flex justify-content-between mb-4">
             <h2>Daftar Appointment | tanggal {{ date('Y-m-d') }}</h2>
-
+            <li class="list-inline-item">
+                <a href="{{ route('appointments.exportExcel') }}" class="btn btn-outline-success">
+                    <i class="bi bi-download me-1"></i> to Excel
+                </a>
+            </li>
             <a href="{{ route('appointments.create') }}" class="btn btn-primary">Create Appointment</a>
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped mb-0 bg-white"
-            id="appointmentTable">
-                    <thead>
+            <table class="table table-bordered table-hover table-striped mb-0 bg-white" id="appointmentTable">
+                <thead>
                     <tr>
                         <th>No</th>
                         <th>Name</th>
@@ -39,8 +41,10 @@
                             <td>{{ $appointment->diffInDays }} Hari Lagi</td>
                             <td>{{ $appointment->message }}</td>
                             <td>
-                                <a href="{{ route('appointments.show', $appointment->id) }}" class="btn btn-sm btn-info">View</a>
-                                <a href="{{ route('appointments.edit', $appointment->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="{{ route('appointments.show', $appointment->id) }}"
+                                    class="btn btn-sm btn-info">View</a>
+                                <a href="{{ route('appointments.edit', $appointment->id) }}"
+                                    class="btn btn-sm btn-primary">Edit</a>
 
                                 <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST"
                                     class="d-inline">
@@ -54,12 +58,18 @@
                             </td>
                             <td>
                                 @php
-                                $whatsappMessage = "Hallo Sobat GIGIKU " . $appointment->name . ", kami dari admin gigiku mau mengingatkan kalau appointment anda : " . $appointment->diffInDays . " hari lagi.
+                                    $whatsappMessage =
+                                        'Hallo Sobat GIGIKU ' .
+                                        $appointment->name .
+                                        ', kami dari admin gigiku mau mengingatkan kalau appointment anda : ' .
+                                        $appointment->diffInDays .
+                                        " hari lagi.
                                 Ingat permasalahan gigi ingat GIGIKU ";
-                                $whatsappNumber = $appointment->phone_number;
-                                $whatsappUrl = "https://wa.me/" . $whatsappNumber . "?text=" . urlencode($whatsappMessage);
-                            @endphp
-                            <a href="{{ $whatsappUrl }}" class="btn btn-sm btn-success" target="_blank">Send Reminder</a>
+                                    $whatsappNumber = $appointment->phone_number;
+                                    $whatsappUrl = 'https://wa.me/' . $whatsappNumber . '?text=' . urlencode($whatsappMessage);
+                                @endphp
+                                <a href="{{ $whatsappUrl }}" class="btn btn-sm btn-success" target="_blank">Send
+                                    Reminder</a>
 
                             </td>
 
@@ -69,7 +79,6 @@
             </table>
         </div>
     </div>
-
 @endsection
 
 
@@ -79,7 +88,7 @@
         $(document).ready(function() {
             $('#appointmentTable').DataTable();
 
-            $(".datatable").on("click", ".btn-delete", function (e) {
+            $(".datatable").on("click", ".btn-delete", function(e) {
                 e.preventDefault();
                 var form = $(this).closest("form");
                 var name = $(this).data("name");
