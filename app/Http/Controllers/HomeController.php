@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Roster;
 
 use Illuminate\Http\Request;
 
@@ -24,11 +25,11 @@ class HomeController extends Controller
 
         return view('services', ['pageTitle' => $pageTitle]);
     }
-    function ourteam()
+    public function ourteam()
     {
-        $pageTitle = 'Ourteam';
-
-        return view('ourteam', ['pageTitle' => $pageTitle]);
+        $rosters = Roster::all();
+        $pageTitle = 'Our Team'; // Define the pageTitle variable here
+        return view('ourteam', compact('rosters', 'pageTitle'));
     }
     function blog()
     {

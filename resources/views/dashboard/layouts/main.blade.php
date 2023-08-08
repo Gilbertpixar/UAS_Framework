@@ -36,7 +36,7 @@
 
                 @stack('scripts')
 
-                {{-- @include('sweetalert::alert') --}}
+                @include('sweetalert::alert')
 
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Roster;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 
@@ -41,7 +42,7 @@ class RostersController extends Controller
         }
 
         Roster::create($data);
-
+        Alert::success('Roster berhasil ditambahkan', 'DATA BERHASIL DITAMBAH.');
         return redirect()->route('rosters.index')->with('success', 'Data roster berhasil ditambahkan!');
     }
 

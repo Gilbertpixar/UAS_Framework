@@ -50,7 +50,7 @@
     </section>
 
     @vite('resources/js/app.js')
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
     @stack('scripts')
 </body>
 
