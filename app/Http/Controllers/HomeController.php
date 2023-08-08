@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Roster;
-
-
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
     function home()
     {
         $pageTitle = 'Home';
@@ -22,30 +18,28 @@ class HomeController extends Controller
 
         return view('about', ['pageTitle' => $pageTitle]);
     }
-
-    function news()
+    function services()
     {
-        $pageTitle = 'News';
+        $pageTitle = 'Services';
 
-        return view('news', ['pageTitle' => $pageTitle]);
+        return view('services', ['pageTitle' => $pageTitle]);
     }
-
-    public function ourteam()
+    function ourteam()
     {
-        $rosters = Roster::all();
-        $pageTitle = 'Our Team'; // Define the pageTitle variable here
-        return view('ourteam', compact('rosters', 'pageTitle'));
-    }
+        $pageTitle = 'Ourteam';
 
+        return view('ourteam', ['pageTitle' => $pageTitle]);
+    }
     function blog()
     {
         $pageTitle = 'Blog';
 
         return view('blog', ['pageTitle' => $pageTitle]);
     }
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    function news()
+    {
+        $pageTitle = 'News';
+
+        return view('news', ['pageTitle' => $pageTitle]);
+    }
 }

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,21 +57,21 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('rosters', RostersController::class);
     // Route::get('/getAppointments', [AppointmentsController::class, 'getData'])->name('getAppointments');
     Route::get('/getAppointments', 'AppointmentsController@getData')->name('getData');
-
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard/appointments/create', [AppointmentsController::class, 'create'])->name('dashboard.appointments.create');
     // ... tambahkan rute lain yang memerlukan autentikasi di sini ...
     Route::resource('appointments', AppointmentsController::class);
-
 });
+
+Route::get('exportExcel', [AppointmentsController::class, 'exportExcel'])->name('appointments.exportExcel');
 
 Route::get('appointments/getData', [AppointmentsController::class, 'getData'])->name('appointments.getData');
 
 
 Route::get('/services', function () {
-    $pageTitle = "Our Services"; 
+    $pageTitle = "Our Services";
     $categories = \App\Models\Category::latest()->paginate(5);
     return view('services', compact('pageTitle', 'categories'));
 })->name('services');
